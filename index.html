@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh Basket — Fruit Shop</title>
+  <style>
+    :root{--accent:#27ae60;--muted:#666;border-radius:12px}
+    *{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{margin:0;background:linear-gradient(180deg,#f7fff7 0%, #ffffff 100%);color:#222}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fff;box-shadow:0 2px 8px rgba(13,13,13,0.06);position:sticky;top:0;z-index:10}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;background:linear-gradient(135deg,var(--accent),#2ecc71);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .brand h1{margin:0;font-size:18px}
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:white;cursor:pointer}
+    .search{display:flex;align-items:center;gap:8px;background:#f3fff3;padding:6px 10px;border-radius:10px}
+    main{padding:22px;max-width:1100px;margin:18px auto}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{background:#fff;padding:14px;border-radius:14px;box-shadow:0 6px 18px rgba(16,16,16,0.05);display:flex;flex-direction:column;gap:10px}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:10px}
+    .muted{color:var(--muted);font-size:13px}
+    .cart-btn{position:relative}
+    .badge{position:absolute;top:-6px;right:-6px;background:#e74c3c;color:white;padding:4px 7px;border-radius:999px;font-size:12px}
+    footer{padding:24px;text-align:center;color:var(--muted)}
+    @media (max-width:640px){header{padding:12px} .brand h1{font-size:16px} .card img{height:130px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">FB</div>
+      <div>
+        <h1>Fresh Basket</h1>
+        <div class="muted" style="font-size:13px">Local fruits • Farm fresh • Fast delivery</div>
+      </div>
+    </div>
+    <nav>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search fruits, e.g. apple" style="border:0;background:transparent;outline:none;width:180px" />
+      </div>
+      <div class="cart-btn">
+        <button id="openCart" class="btn">Cart 🧺</button>
+        <div id="cartCount" class="badge" style="display:none">0</div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome to Fresh Basket</h2>
+    <p>Buy the freshest fruits online directly from the farm. Add to cart and enjoy home delivery.</p>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Fresh Basket — All rights reserved.
+  </footer>
+
+  <!-- Watson Assistant Chat Integration -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "06886044-5cb5-4c8f-9975-0fd055f13df7",
+      region: "eu-de",
+      serviceInstanceID: "fb596220-b866-4b44-91ee-599953abaaed",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</body>
+</html>
